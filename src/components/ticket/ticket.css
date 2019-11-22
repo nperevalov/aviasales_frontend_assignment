@@ -1,0 +1,58 @@
+.Ticket {
+  border-radius: 5px;
+  background: white;
+  width: 100%;
+  height: 184px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.TicketHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.TicketPrice {
+  font-size: 2rem;
+  color: #2196f3;
+  flex-grow: 1;
+}
+.TicketCompany {
+  flex-grow: 1;
+  background-image: url(http://pics.avs.io/99/36/S7@2x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 110px;
+  height: 100%;
+}
+.TicketSpacer {
+  flex-grow: 1;
+}
+.TicketRow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.TicketRowHeader {
+  flex-grow: 1;
+  letter-spacing: 0.042rem;
+  text-transform: uppercase;
+  color: #a0b0b9;
+
+  text-align: left;
+  line-height: 150%;
+}
+
+.TicketRowValue {
+  text-align: left;
+  flex-grow: 1;
+  color: #4a4a4a;
+  font-size: 1.17rem;
+  line-height: 0.5rem;
+  line-height: 150%;
+}
