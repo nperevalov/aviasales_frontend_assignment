@@ -14,19 +14,19 @@ export default function Ticket({ ticket }) {
   const formatDuration = duration => {
     return Math.floor(duration / 60) + "ч " + (duration % 60) + "м";
   };
-  const formatDate = date => {
-    let value = "";
-    try {
-      value = new Date(date).toLocaleString("ru-RU", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric"
-      });
-    } catch {
-      return value;
-    }
+
+  const formatDate = (date, duration) => {
+    let departmentDate = new Date(date);
+    let arrivalDate = new Date(departmentDate.getTime() + duration * 60 * 1000);
+    let value =
+      ("0" + departmentDate.getHours()).slice(-2) +
+      ":" +
+      ("0" + departmentDate.getMinutes()).slice(-2) +
+      " - " +
+      ("0" + arrivalDate.getHours()).slice(-2) +
+      ":" +
+      ("0" + arrivalDate.getMinutes()).slice(-2);
+
     return value;
   };
 
@@ -48,7 +48,9 @@ export default function Ticket({ ticket }) {
               <div className="ticket__route__title">
                 {val.origin + ", " + val.destination}
               </div>
-              <div className="ticket__route__value">{formatDate(val.date)}</div>
+              <div className="ticket__route__value">
+                {formatDate(val.date, val.duration)}
+              </div>
             </div>
             <div className="ticket__lenght">
               <div className="ticket__lenght__title">В пути</div>
