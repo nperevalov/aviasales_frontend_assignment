@@ -3,19 +3,18 @@
 }
 
 .App-logo {
-  height: 60px;
+  height: 5.5rem;
 }
 
 .App-header {
-  height: 150px;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 .App-Container {
-  width: 750px;
+  width: 49rem;
   display: flex;
   flex-direction: row;
   align-content: space-between;
@@ -24,5 +23,6 @@
 .App-RightColumn {
   display: flex;
   flex-direction: column;
-  width: 502px;
+  width: 36rem;
+  margin: 0 10px;
 }

@@ -1,0 +1,50 @@
+@import "../../assets/global";
+
+.TabsContainer {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: stretch;
+  vertical-align: middle;
+  box-shadow: $shadow;
+  border: 1px solid #dfe5ec;
+  border-radius: 5px;
+  overflow: hidden;
+  // margin: 0.8rem;
+  background: $primary-bgcolor;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.TabItem:not(.ActiveTabItem):hover {
+  background-color: $primary-bghover;
+}
+
+.TabItem {
+  user-select: none;
+  text-transform: uppercase;
+  flex: 1 1 auto;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 1rem 1.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.TabItem input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.ActiveTabItem {
+  background: $active-bgcolor;
+  color: $active-color;
+}

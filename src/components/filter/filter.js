@@ -1,30 +1,62 @@
 import React from "react";
-import "./filter.css";
+import "./filter.scss";
 
-export default function Filter() {
+// TODO: Исправить косяк с высотой
+// TODO: анимация нажатия и синхронизация
+export default function Filter({ filter, setFilter }) {
+  const stopsSubst = [
+    "Без пересадок",
+    "1 пересадка",
+    "2 пересадки",
+    "3 пересадки"
+  ];
+
+  var handleChange = event => {
+    event.persist();
+    var val = parseInt(event.target.value);
+
+    var index = filter.indexOf(val);
+    if (event.target.checked === true) {
+      filter.push(val);
+    } else {
+      if (index !== -1) {
+        filter.splice(index, 1);
+      }
+    }
+    setFilter([...filter]);
+  };
+  var handleChangeAll = event => {
+    if (event.target.checked === true) {
+      setFilter([...stopsSubst.keys()]);
+    } else setFilter([]);
+  };
   return (
     <div className="FilterContainer">
       <div className="FilterTitle">Количество пересадок</div>
-      <div className="FilterCheckbox">
-        <input type="checkbox" id="all" name="all" className="MyCheckbox" />
-        <label htmlFor="all">Все</label>
-      </div>
-      <div className="FilterCheckbox">
-        <input type="checkbox" id="none" name="none" className="MyCheckbox" />
-        <label htmlFor="none">Без пересадок</label>
-      </div>
-      <div className="FilterCheckbox">
-        <input type="checkbox" id="one" name="one" className="MyCheckbox" />
-        <label htmlFor="one">1 пересадка</label>
-      </div>
-      <div className="FilterCheckbox">
-        <input type="checkbox" id="two" name="two" className="MyCheckbox" />
-        <label htmlFor="two">2 пересадки</label>
-      </div>
-      <div className="FilterCheckbox">
-        <input type="checkbox" id="three" name="three" className="MyCheckbox" />
-        <label htmlFor="three">3 пересадки</label>
-      </div>
+      <label className="my-checkbox">
+        Все
+        <input
+          type="checkbox"
+          checked={filter.length === stopsSubst.length}
+          onChange={handleChangeAll}
+        />
+        <span className="mark"></span>
+      </label>
+
+      {stopsSubst.map((value, index) => {
+        return (
+          <label className="my-checkbox" key={index}>
+            {stopsSubst[index]}
+            <input
+              type="checkbox"
+              checked={filter.includes(index)}
+              value={index}
+              onChange={handleChange}
+            />
+            <span className="mark"></span>
+          </label>
+        );
+      })}
     </div>
   );
 }

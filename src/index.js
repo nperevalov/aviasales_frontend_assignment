@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/reset.css";
-import "./index.css";
+import "./index.scss";
 import App from "./components/app/app";
 import * as serviceWorker from "./serviceWorker";
 import { isModuleDeclaration } from "@babel/types";

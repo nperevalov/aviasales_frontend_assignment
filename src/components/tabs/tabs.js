@@ -1,32 +1,36 @@
 import React, { useState } from "react";
-import "./tabs.sass";
+import "./tabs.scss";
 
-// FIXME: Серая граница вокруг активного элемента
-// FIXME: Изменить табы на link или button для семантики
-export default function Tabs(props) {
-  const [selectedTab, setTab] = useState(props.defaultTab);
-
-  function handleClick(e) {
-    e.preventDefault();
-    setTab(parseInt(e.target.id));
-    props.onTabSelect(e.target.id);
-  }
+// TODO: сделать рамку и подстветку onhover
+export default function Tabs({ sort, setSort }) {
+  var handeChange = event => {
+    event.persist();
+    setSort(event.target.name);
+  };
   return (
     <div className="TabsContainer">
-      <div
-        className={"TabItem " + (selectedTab === 0 ? "ActiveTabItem" : "")}
-        onClick={handleClick}
-        id={0}
+      <label className={"TabItem " + (sort === "price" ? "ActiveTabItem" : "")}>
+        <input
+          onChange={handeChange}
+          type="radio"
+          name="price"
+          autoComplete="off"
+          checked={sort === "price"}
+        />
+        Самый дешевый
+      </label>
+      <label
+        className={"TabItem " + (sort === "duration" ? "ActiveTabItem" : "")}
       >
-        <div className="TabItemContent">Самый дешевый</div>
-      </div>
-      <div
-        className={"TabItem " + (selectedTab === 1 ? "ActiveTabItem" : "")}
-        onClick={handleClick}
-        id={1}
-      >
-        <div className="TabItemContent">Самый быстрый</div>
-      </div>
+        <input
+          onChange={handeChange}
+          type="radio"
+          name="duration"
+          autoComplete="off"
+          checked={sort === "duration"}
+        />
+        Самый быстрый
+      </label>
     </div>
   );
 }
