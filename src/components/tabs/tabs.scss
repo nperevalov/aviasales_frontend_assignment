@@ -1,9 +1,9 @@
 @import "../../assets/global";
 
-.TabsContainer {
+.tabs {
   width: 100%;
   box-sizing: border-box;
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
   justify-content: stretch;
   vertical-align: middle;
@@ -11,17 +11,12 @@
   border: 1px solid #dfe5ec;
   border-radius: 5px;
   overflow: hidden;
-  // margin: 0.8rem;
+
   background: $primary-bgcolor;
   position: relative;
-  margin-bottom: 20px;
 }
 
-.TabItem:not(.ActiveTabItem):hover {
-  background-color: $primary-bghover;
-}
-
-.TabItem {
+.tabs__item {
   user-select: none;
   text-transform: uppercase;
   flex: 1 1 auto;
@@ -35,7 +30,7 @@
   cursor: pointer;
 }
 
-.TabItem input {
+.tabs__item__input {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -44,7 +39,11 @@
   margin: 0;
 }
 
-.ActiveTabItem {
+.tabs__item__state__selected {
   background: $active-bgcolor;
   color: $active-color;
+}
+
+.tabs__item:not(.tabs__item__state__selected):hover {
+  background-color: $primary-bghover;
 }

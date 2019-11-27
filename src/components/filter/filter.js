@@ -1,8 +1,6 @@
 import React from "react";
 import "./filter.scss";
 
-// TODO: Исправить косяк с высотой
-// TODO: анимация нажатия и синхронизация
 export default function Filter({ filter, setFilter }) {
   const stopsSubst = [
     "Без пересадок",
@@ -11,11 +9,11 @@ export default function Filter({ filter, setFilter }) {
     "3 пересадки"
   ];
 
-  var handleChange = event => {
+  const handleChange = event => {
     event.persist();
-    var val = parseInt(event.target.value);
+    let val = parseInt(event.target.value);
 
-    var index = filter.indexOf(val);
+    let index = filter.indexOf(val);
     if (event.target.checked === true) {
       filter.push(val);
     } else {
@@ -25,35 +23,37 @@ export default function Filter({ filter, setFilter }) {
     }
     setFilter([...filter]);
   };
-  var handleChangeAll = event => {
+  const handleChangeAll = event => {
     if (event.target.checked === true) {
       setFilter([...stopsSubst.keys()]);
     } else setFilter([]);
   };
   return (
-    <div className="FilterContainer">
-      <div className="FilterTitle">Количество пересадок</div>
-      <label className="my-checkbox">
+    <div className="filter">
+      <div className="filter__title">Количество пересадок</div>
+      <label className="filter__checkbox">
         Все
         <input
+          className="filter__checkbox__input"
           type="checkbox"
           checked={filter.length === stopsSubst.length}
           onChange={handleChangeAll}
         />
-        <span className="mark"></span>
+        <span className="filter__checkbox__mark"></span>
       </label>
 
       {stopsSubst.map((value, index) => {
         return (
-          <label className="my-checkbox" key={index}>
+          <label className="filter__checkbox" key={index}>
             {stopsSubst[index]}
             <input
+              className="filter__checkbox__input"
               type="checkbox"
               checked={filter.includes(index)}
               value={index}
               onChange={handleChange}
             />
-            <span className="mark"></span>
+            <span className="filter__checkbox__mark"></span>
           </label>
         );
       })}

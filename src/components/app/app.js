@@ -38,12 +38,10 @@ function App() {
   }
 
   async function fetchTickets() {
-    console.log("fetch run");
     fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`)
       .then(res => {
         if (res.ok)
           res.json().then(data => {
-            console.log(data);
             setTickets([...tickets, ...data.tickets]);
             if (data.stop === false) fetchTickets();
           });
@@ -83,18 +81,18 @@ function App() {
   }, [sort]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="app">
+      <header className="header">
+        <img src={logo} className="header__logo" alt="logo" />
       </header>
-      <div className="App-Container">
+      <div className="filter__wrapper">
         <Filter filter={filter} setFilter={setFilter}></Filter>
-        <div className="App-RightColumn">
-          <Tabs setSort={setSort} sort={sort}></Tabs>
-          {shownTickets.map((value, index) => {
-            return <Ticket key={index} ticket={value}></Ticket>;
-          })}
-        </div>
+      </div>
+      <Tabs setSort={setSort} sort={sort}></Tabs>
+      <div className="tickets">
+        {shownTickets.map((value, index) => {
+          return <Ticket key={index} ticket={value}></Ticket>;
+        })}
       </div>
     </div>
   );

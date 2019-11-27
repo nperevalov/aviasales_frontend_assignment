@@ -1,28 +1,31 @@
-.App {
-  text-align: center;
+.app {
+  width: 47rem;
+  display: grid;
+  grid-template:
+    "header header" 8rem
+    "filter tabs" min-content
+    "filter tickets" 1fr / min-content;
+  gap: 20px;
+  margin: 0 auto;
 }
 
-.App-logo {
+.header__logo {
   height: 5.5rem;
 }
 
-.App-header {
-  height: 10rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.header {
+  align-self: center;
+  grid-area: header;
+  justify-self: center;
+  padding-top: 10px;
 }
-.App-Container {
-  width: 49rem;
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
-  margin: 0 auto;
+
+.tickets {
+  grid-area: tickets;
 }
-.App-RightColumn {
-  display: flex;
-  flex-direction: column;
-  width: 36rem;
-  margin: 0 10px;
+.filter__wrapper {
+  grid-area: filter;
+}
+.tabs {
+  grid-area: tabs;
 }

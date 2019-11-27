@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./tabs.scss";
 
-// TODO: сделать рамку и подстветку onhover
 export default function Tabs({ sort, setSort }) {
-  var handeChange = event => {
+  const handeChange = event => {
     event.persist();
     setSort(event.target.name);
   };
   return (
-    <div className="TabsContainer">
-      <label className={"TabItem " + (sort === "price" ? "ActiveTabItem" : "")}>
+    <div className="tabs">
+      <label
+        className={
+          "tabs__item " +
+          (sort === "price" ? "tabs__item__state__selected" : "")
+        }
+      >
         <input
+          className={"tabs__item__input"}
           onChange={handeChange}
           type="radio"
           name="price"
@@ -20,9 +25,13 @@ export default function Tabs({ sort, setSort }) {
         Самый дешевый
       </label>
       <label
-        className={"TabItem " + (sort === "duration" ? "ActiveTabItem" : "")}
+        className={
+          "tabs__item " +
+          (sort === "duration" ? "tabs__item__state__selected" : "")
+        }
       >
         <input
+          className={"tabs__item__input"}
           onChange={handeChange}
           type="radio"
           name="duration"
